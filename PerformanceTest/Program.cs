@@ -5,7 +5,6 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Validators;
-using PerformanceTest;
 using PerformanceTest.Tests;
 
 var config = new ManualConfig()
@@ -14,4 +13,5 @@ var config = new ManualConfig()
     .AddLogger(ConsoleLogger.Default)
     .AddColumnProvider(DefaultColumnProviders.Instance);
 
-BenchmarkRunner.Run<SerializationBenchmark>(config);
+// BenchmarkRunner.Run<SerializationBenchmark>(config);
+BenchmarkRunner.Run<EnumBenchmark>(config);

@@ -1,11 +1,20 @@
 ﻿using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using PerformanceTest.Objects;
+using StackExchange.Redis;
 
 namespace PerformanceTest.Tests;
 
 public class SerializationBenchmark
 {
+    private ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("localhost");
+    private readonly IDatabase _database;
+
+    public SerializationBenchmark()
+    {
+        _database = connection.GetDatabase();
+    }
+
     [Benchmark]
     public Person? Return_SerializeAndDeserializeObject()
     {
@@ -54,4 +63,5 @@ public class SerializationBenchmark
 
     [Benchmark]
     public string Return_OnlyTextJson() => "{\"Id\":1,\"Name\":\"Guilherme\",\"Age\":21,\"Birthdate\":\"2024-01-04\",\"Cpf\":\"999999999\",\"Cnpj\":null,\"Rg\":\"53303587574\",\"Cnh\":null,\"State\":\"SP\"}";
+    
 }
