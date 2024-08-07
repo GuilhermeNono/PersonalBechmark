@@ -21,13 +21,10 @@ public class SerializationBenchmark
         var person = new Person()
         {
             Age = 21,
-            Birthdate = DateOnly.FromDateTime(DateTime.Now),
-            Cnh = null,
-            Cnpj = null,
+            Birthdate = DateTime.Now,
             Cpf = "999999999",
             Id = 1,
             Name = "Guilherme",
-            Rg = "533023587574",
             State = "SP"
         };
 
@@ -51,13 +48,10 @@ public class SerializationBenchmark
     public Person? Return_OnlyObject() => new()
     {
         Age = 21,
-        Birthdate = DateOnly.FromDateTime(DateTime.Now),
-        Cnh = null,
-        Cnpj = null,
+        Birthdate = DateTime.Now,
         Cpf = "999999999",
         Id = 1,
         Name = "Guilherme",
-        Rg = "53303587574",
         State = "SP"
     };
 
